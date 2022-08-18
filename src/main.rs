@@ -1,3 +1,4 @@
+use colored::Colorize;
 use rand::Rng;
 use std::{cmp::Ordering, io};
 
@@ -14,10 +15,10 @@ fn main() {
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed To Read Line ");
-        /* The & indicates that this argument is a reference, which gives 
-        you a way to let multiple parts of your code access one piece of 
+        /* The & indicates that this argument is a reference, which gives
+        you a way to let multiple parts of your code access one piece of
         data without needing to copy that data into memory multiple times.
-        Like variables, references are immutable by default. Hence, you 
+        Like variables, references are immutable by default. Hence, you
         need to write &mut guess rather than &guess to make it mutable.*/
 
         //Shadowing: redeclare the variable| changing from one type to another
@@ -29,10 +30,10 @@ fn main() {
         println!("You guessed: {guess}");
 
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small"),
-            Ordering::Greater => println!("Too big!"),
+            Ordering::Less => println!("{}", "Too small".red()),
+            Ordering::Greater => println!("{}", "Too big!".red()),
             Ordering::Equal => {
-                println!("You Win!!");
+                println!("{}", "You Win!!".green());
                 break;
             }
         }
